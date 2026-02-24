@@ -1,0 +1,450 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  SITE_CONFIG,
+  PROGRAM_HIGHLIGHTS,
+  FACILITIES,
+  COURSES,
+  FACULTY,
+  STUDENT_SUCCESS,
+  PROGRAM_INFO
+} from "@/lib/constants";
+import {
+  Mic2,
+  Users,
+  Award,
+  DollarSign,
+  ArrowRight,
+  CheckCircle,
+  Music,
+  Radio,
+  Headphones,
+  Volume2,
+  MapPin,
+  Mail,
+  Phone,
+  GraduationCap,
+  Quote
+} from "lucide-react";
+
+const iconMap = {
+  Mic2,
+  Users,
+  Award,
+  DollarSign,
+};
+---
+
+<PageLayout>
+  <!-- Hero Section -->
+  <section class="gradient-hero min-h-screen flex items-center pt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <Badge variant="outline" className="mb-6">
+            Southwestern College - San Diego
+          </Badge>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+            <span class="gradient-text">Southwestern</span>
+            <br />
+            <span class="text-foreground">Recording</span>
+          </h1>
+          <p class="text-xl text-muted-foreground mb-4">
+            Recording Arts & Technology Program
+          </p>
+          <p class="text-lg text-muted-foreground mb-8 max-w-xl">
+            Launch your career in audio engineering, music production, and sound design.
+            Learn from industry professionals in our state-of-the-art recording facilities.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-md font-semibold hover:bg-primary/90 transition-colors"
+            >
+              Apply Now
+              <ArrowRight className="h-5 w-5" />
+            </a>
+            <a
+              href="#program"
+              class="inline-flex items-center justify-center gap-2 border border-input bg-background px-8 py-4 rounded-md font-semibold hover:bg-accent hover:text-accent-foreground transition-colors"
+            >
+              Explore Program
+            </a>
+          </div>
+        </div>
+
+        <!-- Waveform Visualization -->
+        <div class="hidden lg:flex items-center justify-center">
+          <div class="relative w-full max-w-md aspect-square">
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 studio-glow flex items-center justify-center">
+              <!-- Stylized Waveform -->
+              <div class="flex items-center gap-1 h-32">
+                {[0.3, 0.5, 0.8, 1, 0.7, 0.9, 0.6, 0.4, 0.7, 1, 0.8, 0.5, 0.3].map((height, i) => (
+                  <div
+                    class="w-3 bg-gradient-to-t from-primary to-accent rounded-full waveform-bar"
+                    style={`height: ${height * 100}%; animation-delay: ${i * 0.1}s`}
+                  />
+                ))}
+              </div>
+            </div>
+            <!-- Floating icons -->
+            <div class="absolute -top-4 -left-4 p-4 bg-card rounded-xl border border-border shadow-lg">
+              <Mic2 className="h-8 w-8 text-primary" />
+            </div>
+            <div class="absolute -bottom-4 -right-4 p-4 bg-card rounded-xl border border-border shadow-lg">
+              <Headphones className="h-8 w-8 text-accent" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Overview Section -->
+  <section id="program" class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <Badge variant="secondary" className="mb-4">
+          Program Overview
+        </Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+          Why Southwestern Recording?
+        </h2>
+        <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+          Our Recording Arts & Technology program combines technical excellence with creative expression,
+          preparing you for a successful career in the audio industry.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {PROGRAM_HIGHLIGHTS.map((highlight) => {
+          const Icon = iconMap[highlight.icon as keyof typeof iconMap];
+          return (
+            <div class="p-6 rounded-xl bg-card border border-border card-hover">
+              <div class="inline-flex p-3 rounded-full bg-primary/10 text-primary mb-4">
+                <Icon className="h-6 w-6" />
+              </div>
+              <h3 class="font-semibold text-lg mb-2">{highlight.title}</h3>
+              <p class="text-muted-foreground text-sm">{highlight.description}</p>
+            </div>
+          );
+        })}
+      </div>
+
+      <!-- Degrees & Certificates -->
+      <div class="bg-card rounded-2xl p-8 border border-border">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <GraduationCap className="h-6 w-6 text-primary" />
+              <h3 class="font-semibold text-lg">Degrees & Certificates</h3>
+            </div>
+            <ul class="space-y-2">
+              {PROGRAM_INFO.degrees.map((degree) => (
+                <li class="flex items-center gap-2 text-muted-foreground">
+                  <CheckCircle className="h-4 w-4 text-accent shrink-0" />
+                  <span>{degree}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg mb-4">Program Duration</h3>
+            <p class="text-muted-foreground">{PROGRAM_INFO.duration}</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg mb-4">Format</h3>
+            <p class="text-muted-foreground">{PROGRAM_INFO.format}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities Section -->
+  <section id="facilities" class="py-24 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <Badge variant="accent" className="mb-4">
+          State-of-the-Art
+        </Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+          Professional Facilities
+        </h2>
+        <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+          Train on industry-standard equipment in our professionally designed recording studios and production spaces.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {FACILITIES.map((facility, index) => (
+          <div class="group relative overflow-hidden rounded-2xl bg-background border border-border p-8 card-hover">
+            <div class="absolute top-0 left-0 w-full h-1 vu-accent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+            <div class="flex items-start gap-4">
+              <div class="p-3 rounded-xl bg-primary/10">
+                {index === 0 && <Music className="h-6 w-6 text-primary" />}
+                {index === 1 && <Radio className="h-6 w-6 text-primary" />}
+                {index === 2 && <Headphones className="h-6 w-6 text-primary" />}
+                {index === 3 && <Volume2 className="h-6 w-6 text-primary" />}
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold text-xl mb-2">{facility.name}</h3>
+                <p class="text-muted-foreground mb-4">{facility.description}</p>
+                <div class="flex flex-wrap gap-2">
+                  {facility.features.map((feature) => (
+                    <Badge variant="secondary" className="text-xs">
+                      {feature}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section id="courses" class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <Badge variant="outline" className="mb-4">
+          Curriculum
+        </Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+          Courses & Curriculum
+        </h2>
+        <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+          From fundamentals to advanced techniques, our comprehensive curriculum covers all aspects of modern audio production.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {COURSES.map((course) => (
+          <Card className="card-hover">
+            <CardHeader>
+              <div class="flex items-center justify-between mb-2">
+                <Badge
+                  variant={course.level === "Beginner" ? "secondary" : course.level === "Intermediate" ? "default" : "accent"}
+                  className="text-xs"
+                >
+                  {course.level}
+                </Badge>
+                <span class="text-xs text-muted-foreground font-mono">{course.id.toUpperCase()}</span>
+              </div>
+              <CardTitle className="text-lg">{course.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>{course.description}</CardDescription>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <a
+          href="https://www.swccd.edu"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+        >
+          View full course catalog
+          <ArrowRight className="h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Faculty Section -->
+  <section id="faculty" class="py-24 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <Badge variant="secondary" className="mb-4">
+          Expert Instructors
+        </Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+          Meet Our Faculty
+        </h2>
+        <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+          Learn from experienced professionals who bring real-world industry knowledge to the classroom.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {FACULTY.map((member) => (
+          <div class="text-center">
+            <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 mx-auto mb-6 flex items-center justify-center border-4 border-primary/30">
+              <span class="text-3xl font-bold gradient-text">
+                {member.name.split(' ').map(n => n[0]).join('')}
+              </span>
+            </div>
+            <h3 class="font-semibold text-lg">{member.name}</h3>
+            <p class="text-primary font-medium mb-2">{member.title}</p>
+            <p class="text-muted-foreground text-sm">{member.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Success Section -->
+  <section id="success" class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <Badge variant="accent" className="mb-4">
+          Alumni Achievements
+        </Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+          Student Success Stories
+        </h2>
+        <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+          Our graduates are making waves in the audio industry. Here are some of their stories.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {STUDENT_SUCCESS.map((student) => (
+          <div class="bg-card rounded-2xl p-8 border border-border relative">
+            <Quote className="absolute top-6 right-6 h-8 w-8 text-primary/20" />
+            <div class="mb-6">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 mb-4 flex items-center justify-center">
+                <span class="text-xl font-bold gradient-text">
+                  {student.name.split(' ').map(n => n[0]).join('')}
+                </span>
+              </div>
+              <h3 class="font-semibold">{student.name}</h3>
+              <p class="text-sm text-muted-foreground">Class of {student.year}</p>
+            </div>
+            <p class="text-accent font-medium mb-4">{student.achievement}</p>
+            <p class="text-muted-foreground italic text-sm">"{student.quote}"</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Admissions CTA Section -->
+  <section id="contact" class="py-24 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <Badge variant="outline" className="mb-4">
+            Start Your Journey
+          </Badge>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+            Ready to Record Your Future?
+          </h2>
+          <p class="text-muted-foreground text-lg mb-8">
+            Take the first step toward your career in audio. Apply to Southwestern College's
+            Recording Arts & Technology program today.
+          </p>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-3">
+              <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                <Mail className="h-5 w-5" />
+              </div>
+              <a href={`mailto:${SITE_CONFIG.email}`} class="text-foreground hover:text-primary transition-colors">
+                {SITE_CONFIG.email}
+              </a>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                <Phone className="h-5 w-5" />
+              </div>
+              <a href={`tel:${SITE_CONFIG.phone.replace(/[^0-9+]/g, '')}`} class="text-foreground hover:text-primary transition-colors">
+                {SITE_CONFIG.phone}
+              </a>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                <MapPin className="h-5 w-5" />
+              </div>
+              <div>
+                <p class="text-foreground">Southwestern College</p>
+                <p class="text-muted-foreground text-sm">{SITE_CONFIG.address}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="https://www.swccd.edu/admissions"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-md font-semibold hover:bg-primary/90 transition-colors"
+            >
+              Apply to Southwestern
+              <ArrowRight className="h-5 w-5" />
+            </a>
+            <a
+              href="https://www.swccd.edu/campus-visit"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 border border-input bg-background px-8 py-4 rounded-md font-semibold hover:bg-accent hover:text-accent-foreground transition-colors"
+            >
+              Schedule a Tour
+            </a>
+          </div>
+        </div>
+
+        <!-- Info Card -->
+        <div class="bg-background rounded-2xl p-8 border border-border">
+          <h3 class="text-xl font-semibold mb-6">Admissions Information</h3>
+
+          <div class="space-y-6">
+            <div>
+              <h4 class="font-medium mb-2">Application Deadlines</h4>
+              <p class="text-muted-foreground text-sm">
+                Fall Semester: Priority deadline in May<br />
+                Spring Semester: Priority deadline in November
+              </p>
+            </div>
+
+            <div>
+              <h4 class="font-medium mb-2">Requirements</h4>
+              <ul class="space-y-2 text-sm text-muted-foreground">
+                <li class="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                  <span>High school diploma or equivalent</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                  <span>Complete Southwestern College application</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                  <span>Orientation and assessment</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                  <span>Meet with a counselor to plan your courses</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="font-medium mb-2">Financial Aid</h4>
+              <p class="text-muted-foreground text-sm">
+                Community college tuition rates apply. Financial aid, grants, and scholarships are available.
+                Many California residents qualify for free tuition through the California Promise program.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-border">
+              <p class="text-sm text-muted-foreground">
+                Questions? Email us at{' '}
+                <a href={`mailto:${SITE_CONFIG.email}`} class="text-primary hover:underline">
+                  {SITE_CONFIG.email}
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
