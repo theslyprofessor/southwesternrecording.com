@@ -7,6 +7,7 @@ import {
   PROGRAM_HIGHLIGHTS,
   FACILITIES,
   COURSES,
+  DEGREES,
   FACULTY,
   STUDENT_SUCCESS,
   PROGRAM_INFO
@@ -31,7 +32,9 @@ import {
   Building,
   Calendar,
   Handshake,
-  ExternalLink
+  ExternalLink,
+  Monitor,
+  Sliders
 } from "lucide-react";
 
 const iconMap = {
@@ -49,8 +52,11 @@ const iconMap = {
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
           <Badge variant="outline" className="mb-6">
-            Southwestern College &mdash; Chula Vista, CA
+            Chula Vista, CA
           </Badge>
+          <p class="text-lg font-semibold text-primary tracking-wide uppercase mb-2">
+            Southwestern College
+          </p>
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
             <span class="gradient-text">Center for</span>
             <br />
@@ -63,7 +69,7 @@ const iconMap = {
           </p>
           <p class="text-lg text-muted-foreground mb-8 max-w-xl">
             Launch your career in audio engineering, music production, and sound design.
-            Train on world-class equipment in a $6.5 million facility designed for learning.
+            Train on world-class equipment in studios designed for hands-on learning.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
             <a
@@ -130,27 +136,47 @@ const iconMap = {
       <!-- Degrees & Certificates -->
       <div class="bg-card rounded-2xl p-8 border border-border">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
+          <div class="md:col-span-2">
             <div class="flex items-center gap-2 mb-4">
               <GraduationCap className="h-6 w-6 text-primary" />
               <h3 class="font-semibold text-lg">Degrees & Certificates</h3>
             </div>
-            <ul class="space-y-2">
-              {PROGRAM_INFO.degrees.map((degree) => (
-                <li class="flex items-center gap-2 text-muted-foreground">
-                  <CheckCircle className="h-4 w-4 text-accent shrink-0" />
-                  <span>{degree}</span>
+            <ul class="space-y-3">
+              {DEGREES.map((degree) => (
+                <li class="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-accent shrink-0 mt-1" />
+                  <div>
+                    {degree.url ? (
+                      <a
+                        href={degree.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-foreground hover:text-primary transition-colors font-medium"
+                      >
+                        {degree.name}
+                        <ArrowRight className="inline h-3 w-3 ml-1" />
+                      </a>
+                    ) : (
+                      <span class="text-foreground font-medium">{degree.name}</span>
+                    )}
+                  </div>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <h3 class="font-semibold text-lg mb-4">Program Duration</h3>
-            <p class="text-muted-foreground">{PROGRAM_INFO.duration}</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-lg mb-4">Format</h3>
-            <p class="text-muted-foreground">{PROGRAM_INFO.format}</p>
+          <div class="space-y-6">
+            <div>
+              <h3 class="font-semibold text-lg mb-2">Program Duration</h3>
+              <p class="text-muted-foreground">{PROGRAM_INFO.duration}</p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-2">Total Units</h3>
+              <p class="text-muted-foreground">{PROGRAM_INFO.totalUnits} units</p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-2">Format</h3>
+              <p class="text-muted-foreground">{PROGRAM_INFO.format}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -165,10 +191,10 @@ const iconMap = {
           State-of-the-Art
         </Badge>
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-          Professional Facilities
+          Five Professional Studios
         </h2>
         <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Train on industry-standard equipment in our professionally designed recording studios and production spaces.
+          Train on industry-standard equipment across five studios, from our flagship SSL room to dedicated electronic music production suites.
         </p>
       </div>
 
@@ -177,7 +203,7 @@ const iconMap = {
         <div class="photo-frame aspect-[16/10]">
           <img
             src="/images/studio-a-control-room.webp"
-            alt="Studio A Control Room with SSL console"
+            alt="Studio A Control Room with SSL Duality SE console"
             loading="lazy"
           />
         </div>
@@ -219,15 +245,16 @@ const iconMap = {
         </div>
       </div>
 
-      <!-- Other Facilities -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Studios B through E -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {FACILITIES.slice(2).map((facility, index) => (
           <div class="group relative overflow-hidden rounded-2xl bg-background border border-border p-8 card-hover">
             <div class="absolute top-0 left-0 w-full h-1 vu-accent opacity-50 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex items-start gap-4">
               <div class="p-3 rounded-xl bg-primary/10">
-                {index === 0 && <Headphones className="h-6 w-6 text-primary" />}
-                {index === 1 && <Volume2 className="h-6 w-6 text-primary" />}
+                {index === 0 && <Radio className="h-6 w-6 text-primary" />}
+                {index === 1 && <Monitor className="h-6 w-6 text-primary" />}
+                {index === 2 && <Sliders className="h-6 w-6 text-primary" />}
               </div>
               <div class="flex-1">
                 <h3 class="font-semibold text-xl mb-2">{facility.name}</h3>
@@ -291,7 +318,7 @@ const iconMap = {
                 <h3 class="font-bold text-xl">World-Class Facilities</h3>
               </div>
               <p class="text-muted-foreground">
-                The investment created recording studios, production labs, and mastering suites equipped with the same gear used by top professionals. The facility was designed from the ground up for education, with acoustics by studio designers and equipment from SSL, Avid, and more.
+                The investment created five recording studios, production labs, and mastering suites equipped with the same gear used by top professionals. The facility was designed from the ground up for education, with acoustics by studio designers and equipment from SSL, Avid, and more.
               </p>
             </div>
 
@@ -321,7 +348,7 @@ const iconMap = {
           Courses & Curriculum
         </h2>
         <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
-          From fundamentals to advanced techniques, our comprehensive curriculum covers all aspects of modern audio production.
+          From music technology fundamentals to professional work experience, our curriculum covers all aspects of modern audio production.
         </p>
       </div>
 
@@ -336,9 +363,13 @@ const iconMap = {
                 >
                   {course.level}
                 </Badge>
-                <span class="text-xs text-muted-foreground font-mono">{course.id.toUpperCase()}</span>
+                <span class="text-xs text-muted-foreground font-mono">{course.units} units</span>
               </div>
               <CardTitle className="text-lg">{course.title}</CardTitle>
+              <p class="text-xs text-muted-foreground font-mono mt-1">
+                {course.id}
+                {course.crosslisted && <span class="text-muted-foreground/70"> / {course.crosslisted}</span>}
+              </p>
             </CardHeader>
             <CardContent>
               <CardDescription>{course.description}</CardDescription>
@@ -349,12 +380,12 @@ const iconMap = {
 
       <div class="mt-12 text-center">
         <a
-          href="https://www.swccd.edu"
+          href="https://catalog.swccd.edu/associate-degree-certificate-programs/recording-arts-technology/recording-arts-technology-as/"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 text-primary hover:underline font-medium"
         >
-          View full course catalog
+          View full degree plan in the SWC catalog
           <ArrowRight className="h-4 w-4" />
         </a>
       </div>
@@ -366,7 +397,7 @@ const iconMap = {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <Badge variant="secondary" className="mb-4">
-          Expert Instructors
+          Our Team
         </Badge>
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">
           Meet Our Faculty
@@ -376,25 +407,14 @@ const iconMap = {
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="max-w-md mx-auto">
         {FACULTY.map((member) => (
           <div class="text-center bg-card rounded-2xl p-8 border border-border card-hover">
-            {member.image ? (
-              <div class="w-32 h-32 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  class="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-            ) : (
-              <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 mx-auto mb-6 flex items-center justify-center border-4 border-primary/20">
-                <span class="text-3xl font-bold gradient-text">
-                  {member.name.split(' ').map(n => n[0]).join('')}
-                </span>
-              </div>
-            )}
+            <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 mx-auto mb-6 flex items-center justify-center border-4 border-primary/20">
+              <span class="text-3xl font-bold gradient-text">
+                {member.name.split(' ').map(n => n[0]).join('')}
+              </span>
+            </div>
             <h3 class="font-semibold text-lg">{member.name}</h3>
             <p class="text-primary font-medium mb-2">{member.title}</p>
             <p class="text-muted-foreground text-sm">{member.bio}</p>
@@ -409,31 +429,32 @@ const iconMap = {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <Badge variant="secondary" className="mb-4">
-          Alumni Achievements
+          Student Voices
         </Badge>
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-          Student Success Stories
+          What Our Students Say
         </h2>
         <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Our graduates are making waves in the audio industry. Here are some of their stories.
+          Hear from graduates who launched their careers through the Recording Arts & Technology program.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {STUDENT_SUCCESS.map((student) => (
           <div class="bg-background rounded-2xl p-8 border border-border relative">
             <Quote className="absolute top-6 right-6 h-8 w-8 text-primary/15" />
-            <div class="mb-6">
-              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 mb-4 flex items-center justify-center">
-                <span class="text-xl font-bold gradient-text">
-                  {student.name.split(' ').map(n => n[0]).join('')}
-                </span>
+            <p class="text-foreground italic mb-6 text-lg leading-relaxed">
+              &ldquo;{student.quote}&rdquo;
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                <GraduationCap className="h-5 w-5 text-primary" />
               </div>
-              <h3 class="font-semibold">{student.name}</h3>
-              <p class="text-sm text-muted-foreground">Class of {student.year}</p>
+              <div>
+                <p class="font-medium text-sm">{student.name}</p>
+                <p class="text-xs text-muted-foreground">Class of {student.year}</p>
+              </div>
             </div>
-            <p class="text-primary font-medium mb-4">{student.achievement}</p>
-            <p class="text-muted-foreground italic text-sm">"{student.quote}"</p>
           </div>
         ))}
       </div>
@@ -621,25 +642,28 @@ const iconMap = {
             </div>
 
             <div>
-              <h4 class="font-medium mb-2">Requirements</h4>
+              <h4 class="font-medium mb-2">How to Enroll</h4>
               <ul class="space-y-2 text-sm text-muted-foreground">
                 <li class="flex items-start gap-2">
                   <CheckCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
-                  <span>High school diploma or equivalent</span>
+                  <span>Complete the free Southwestern College application</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <CheckCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
-                  <span>Complete Southwestern College application</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
-                  <span>Orientation and assessment</span>
+                  <span>Attend orientation and complete assessment</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <CheckCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
                   <span>Meet with a counselor to plan your courses</span>
                 </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                  <span>Register for classes &mdash; no prior experience required</span>
+                </li>
               </ul>
+              <p class="text-xs text-muted-foreground mt-3">
+                Open enrollment &mdash; no high school diploma required. Southwestern College welcomes all students 18 and older.
+              </p>
             </div>
 
             <div>

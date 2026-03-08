@@ -58,102 +58,169 @@ export const FACILITIES = [
     image: "/images/studio-a-tracking-room.webp",
   },
   {
-    name: "Production Lab",
-    description: "24-station computer lab with professional DAWs and plugins for music production coursework.",
-    features: ["Pro Tools", "Logic Pro X", "Ableton Live", "Universal Audio"],
+    name: "Studio B",
+    description: "Intimate tracking and mixing environment perfect for smaller sessions, overdubs, and post-production work.",
+    features: ["Digital Console", "Pro Tools HDX", "Isolation Booth", "Video Sync"],
   },
   {
-    name: "Mastering Suite",
-    description: "Dedicated mastering room with reference monitoring and analog outboard processing.",
-    features: ["PMC Monitors", "Analog Mastering Chain", "Acoustically Calibrated", "High-Res Audio"],
+    name: "Studios C & D",
+    description: "Production suites equipped with professional DAWs and monitoring for music production, editing, and mixing coursework.",
+    features: ["Pro Tools", "Logic Pro", "Ableton Live", "Studio Monitors"],
+  },
+  {
+    name: "Studio E",
+    description: "Dedicated electronic music production and sound design lab with MIDI controllers, synthesizers, and surround monitoring.",
+    features: ["MIDI Controllers", "Synthesizers", "Surround Sound", "Plugin Suites"],
   },
 ] as const;
 
 export const COURSES = [
   {
-    id: "rat-100",
-    title: "Introduction to Audio",
-    description: "Fundamentals of sound, acoustics, and signal flow. The essential foundation for all audio work.",
+    id: "RA&T 100",
+    title: "Music Technology",
+    crosslisted: "MUS 100",
+    description: "Introduction to music technology, digital audio workstations, MIDI, and electronic music production fundamentals.",
+    units: 3,
     level: "Beginner",
   },
   {
-    id: "rat-110",
+    id: "RA&T 105",
+    title: "Electroacoustic Composition",
+    crosslisted: "MUS 155",
+    description: "Creative sound design and electronic composition using synthesis, sampling, and digital audio processing.",
+    units: 3,
+    level: "Intermediate",
+  },
+  {
+    id: "RA&T 110",
+    title: "Music Business / Career Overview",
+    crosslisted: "MUS 150",
+    description: "Overview of the music industry including publishing, licensing, contracts, royalties, and career planning.",
+    units: 3,
+    level: "Beginner",
+  },
+  {
+    id: "RA&T 120",
     title: "Recording Techniques",
+    crosslisted: "FTMA 111 / MUS 151",
     description: "Microphone selection, placement, and tracking workflows. Learn to capture great sound at the source.",
+    units: 3,
     level: "Beginner",
   },
   {
-    id: "rat-120",
-    title: "Music Production",
-    description: "Electronic music production, beat making, and arrangement using industry-standard DAWs.",
+    id: "RA&T 121",
+    title: "Audio Recording Technology I",
+    description: "Advanced recording, mixing, and signal processing techniques in a professional studio environment.",
+    units: 4,
     level: "Intermediate",
   },
   {
-    id: "rat-200",
-    title: "Mixing & Signal Processing",
-    description: "EQ, compression, reverb, and effects. Transform raw tracks into polished productions.",
+    id: "RA&T 122",
+    title: "Audio Recording Technology II",
+    description: "Capstone studio course covering advanced mixing, mastering, and professional session management.",
+    units: 4,
+    level: "Advanced",
+  },
+  {
+    id: "RA&T 131",
+    title: "Recording Techniques for Mixed Media",
+    crosslisted: "FTMA 121",
+    description: "Sound design and recording for film, television, and multimedia. Dialog editing, Foley, and final mix.",
+    units: 3,
+    level: "Advanced",
+  },
+  {
+    id: "RA&T 141",
+    title: "Intro to Computer Programming — Audio Focus",
+    description: "Programming fundamentals applied to audio applications, automation, and creative coding for sound.",
+    units: 3,
     level: "Intermediate",
   },
   {
-    id: "rat-210",
-    title: "Audio Post-Production",
-    description: "Sound design for film, television, and games. Dialog editing, Foley, and final mix.",
-    level: "Advanced",
+    id: "RA&T 151",
+    title: "Intro to Electronics — Audio Focus",
+    description: "Electronics fundamentals for audio: circuits, signal flow, soldering, and equipment maintenance.",
+    units: 3,
+    level: "Intermediate",
   },
   {
-    id: "rat-220",
-    title: "Mastering & Distribution",
-    description: "Final polish and delivery. Prepare your music for streaming platforms and physical media.",
+    id: "RA&T 171",
+    title: "Live Sound",
+    description: "Live sound reinforcement including system design, mixing, stage setup, and event production.",
+    units: 4,
+    level: "Intermediate",
+  },
+  {
+    id: "RA&T 290",
+    title: "Professional Audio Work Experience",
+    description: "Supervised work experience in a professional audio environment. Apply classroom skills in real-world settings.",
+    units: "2-4",
     level: "Advanced",
+  },
+] as const;
+
+export const DEGREES = [
+  {
+    name: "Recording Arts & Technology — Associate in Science",
+    abbrev: "AS",
+    url: "https://catalog.swccd.edu/associate-degree-certificate-programs/recording-arts-technology/recording-arts-technology-as/",
+  },
+  {
+    name: "Recording Arts & Technology — Certificate of Achievement",
+    abbrev: "Certificate",
+    url: "https://catalog.swccd.edu/associate-degree-certificate-programs/recording-arts-technology/recording-arts-technology-certificate/",
+  },
+  {
+    name: "Commercial Music — Associate in Arts",
+    abbrev: "AA",
+    url: "https://catalog.swccd.edu/associate-degree-certificate-programs/music/commercial-music-aa/",
+  },
+  {
+    name: "Commercial Music — Certificate",
+    abbrev: "Certificate",
+    url: "",
   },
 ] as const;
 
 export const FACULTY = [
   {
-    name: "Jay Henry",
-    title: "Program Founder & Director Emeritus",
-    bio: "Grammy-nominated engineer and producer who founded the Center for Recording Arts & Technology in 2007. Decades of professional experience in recording and production.",
-    image: "/images/jay-henry.jpg",
-  },
-  {
-    name: "Faculty Member",
-    title: "Studio Manager & Instructor",
-    bio: "Expert in studio operations, mixing techniques, and live sound reinforcement.",
-  },
-  {
-    name: "Faculty Member",
-    title: "Music Production Instructor",
-    bio: "Specialist in electronic music production, sound design, and emerging audio technologies.",
+    name: "Nakul Tiruviluamala",
+    title: "Program Lead",
+    bio: "Audio engineer, technologist, and educator leading the Recording Arts & Technology program at Southwestern College.",
   },
 ] as const;
 
 export const STUDENT_SUCCESS = [
   {
-    name: "Student Name",
+    name: "Recent Graduate",
     year: "2024",
-    achievement: "Now working as Assistant Engineer at major San Diego recording studio",
-    quote: "The hands-on experience I got at Southwestern prepared me for real studio work.",
+    quote: "Before Southwestern, I didn't even know what a DAW was. Two years later I was running sessions and mixing records. This program changed the trajectory of my life.",
   },
   {
-    name: "Student Name",
+    name: "Recent Graduate",
     year: "2023",
-    achievement: "Launched successful podcast production company",
-    quote: "I learned not just the technical skills, but how to run a professional audio business.",
+    quote: "The faculty treat you like a colleague, not just a student. I walked out with real credits, real skills, and a reel I'm proud of.",
   },
   {
-    name: "Student Name",
+    name: "Recent Graduate",
     year: "2023",
-    achievement: "Transferred to prestigious music technology program",
-    quote: "Southwestern gave me the foundation to pursue my bachelor's degree with confidence.",
+    quote: "I came in wanting to make beats. I left knowing how to record a full band, mix for film, and wire a live sound rig. The breadth of what you learn here is incredible.",
+  },
+  {
+    name: "Recent Graduate",
+    year: "2024",
+    quote: "The work experience course put me in a real studio with real clients. That internship turned into my first paying gig before I even graduated.",
   },
 ] as const;
 
 export const PROGRAM_INFO = {
   degrees: [
-    "Associate in Science Degree",
-    "Certificate of Achievement",
-    "Certificate of Proficiency",
+    "Associate in Science (Recording Arts & Technology)",
+    "Certificate of Achievement (Recording Arts & Technology)",
+    "Associate in Arts (Commercial Music)",
+    "Certificate (Commercial Music)",
   ],
   duration: "2 years (full-time)",
   format: "In-person with hands-on studio time",
+  totalUnits: "31-35",
 } as const;
