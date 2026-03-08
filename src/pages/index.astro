@@ -26,7 +26,12 @@ import {
   Mail,
   Phone,
   GraduationCap,
-  Quote
+  Quote,
+  Instagram,
+  Building,
+  Calendar,
+  Handshake,
+  ExternalLink
 } from "lucide-react";
 
 const iconMap = {
@@ -44,19 +49,21 @@ const iconMap = {
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
           <Badge variant="outline" className="mb-6">
-            Southwestern College - San Diego
+            Southwestern College &mdash; Chula Vista, CA
           </Badge>
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-            <span class="gradient-text">Southwestern</span>
+            <span class="gradient-text">Center for</span>
             <br />
-            <span class="text-foreground">Recording</span>
+            <span class="text-foreground">Recording Arts</span>
+            <br />
+            <span class="text-foreground">&amp; Technology</span>
           </h1>
           <p class="text-xl text-muted-foreground mb-4">
-            Recording Arts & Technology Program
+            Professional Audio Education in San Diego
           </p>
           <p class="text-lg text-muted-foreground mb-8 max-w-xl">
             Launch your career in audio engineering, music production, and sound design.
-            Learn from industry professionals in our state-of-the-art recording facilities.
+            Train on world-class equipment in a $6.5 million facility designed for learning.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
             <a
@@ -67,35 +74,22 @@ const iconMap = {
               <ArrowRight className="h-5 w-5" />
             </a>
             <a
-              href="#program"
-              class="inline-flex items-center justify-center gap-2 border border-input bg-background px-8 py-4 rounded-md font-semibold hover:bg-accent hover:text-accent-foreground transition-colors"
+              href="#collaborate"
+              class="inline-flex items-center justify-center gap-2 border border-input bg-card px-8 py-4 rounded-md font-semibold hover:bg-secondary transition-colors"
             >
-              Explore Program
+              Book a Session
             </a>
           </div>
         </div>
 
-        <!-- Waveform Visualization -->
-        <div class="hidden lg:flex items-center justify-center">
-          <div class="relative w-full max-w-md aspect-square">
-            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 studio-glow flex items-center justify-center">
-              <!-- Stylized Waveform -->
-              <div class="flex items-center gap-1 h-32">
-                {[0.3, 0.5, 0.8, 1, 0.7, 0.9, 0.6, 0.4, 0.7, 1, 0.8, 0.5, 0.3].map((height, i) => (
-                  <div
-                    class="w-3 bg-gradient-to-t from-primary to-accent rounded-full waveform-bar"
-                    style={`height: ${height * 100}%; animation-delay: ${i * 0.1}s`}
-                  />
-                ))}
-              </div>
-            </div>
-            <!-- Floating icons -->
-            <div class="absolute -top-4 -left-4 p-4 bg-card rounded-xl border border-border shadow-lg">
-              <Mic2 className="h-8 w-8 text-primary" />
-            </div>
-            <div class="absolute -bottom-4 -right-4 p-4 bg-card rounded-xl border border-border shadow-lg">
-              <Headphones className="h-8 w-8 text-accent" />
-            </div>
+        <!-- Hero Image: Studio A -->
+        <div class="hidden lg:block">
+          <div class="photo-frame aspect-[4/3]">
+            <img
+              src="/images/studio-a-mic-shootout.jpg"
+              alt="Studio A Control Room at the Center for Recording Arts & Technology featuring SSL Duality SE console"
+              loading="eager"
+            />
           </div>
         </div>
       </div>
@@ -167,7 +161,7 @@ const iconMap = {
   <section id="facilities" class="py-24 bg-card">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <Badge variant="accent" className="mb-4">
+        <Badge variant="secondary" className="mb-4">
           State-of-the-Art
         </Badge>
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">
@@ -178,16 +172,62 @@ const iconMap = {
         </p>
       </div>
 
+      <!-- Studio A Feature with Photo -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div class="photo-frame aspect-[16/10]">
+          <img
+            src="/images/studio-a-control-room.webp"
+            alt="Studio A Control Room with SSL console"
+            loading="lazy"
+          />
+        </div>
+        <div class="flex flex-col justify-center">
+          <h3 class="font-bold text-2xl mb-3">Studio A &mdash; Control Room</h3>
+          <p class="text-muted-foreground mb-4">
+            Our flagship recording space features an SSL Duality SE console, Pro Tools HDX, and a full complement of outboard processing. Designed for professional tracking, mixing, and mastering.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {FACILITIES[0].features.map((feature) => (
+              <Badge variant="secondary" className="text-xs">
+                {feature}
+              </Badge>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div class="flex flex-col justify-center order-2 lg:order-1">
+          <h3 class="font-bold text-2xl mb-3">Studio A &mdash; Tracking Room</h3>
+          <p class="text-muted-foreground mb-4">
+            A spacious live room with world-class acoustics, hardwood floors, and room for a full ensemble. Features a grand piano, isolation booths, and high ceilings for natural ambience.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {FACILITIES[1].features.map((feature) => (
+              <Badge variant="secondary" className="text-xs">
+                {feature}
+              </Badge>
+            ))}
+          </div>
+        </div>
+        <div class="photo-frame aspect-[16/10] order-1 lg:order-2">
+          <img
+            src="/images/studio-a-tracking-room.webp"
+            alt="Studio A Tracking Room with hardwood floors and grand piano"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Other Facilities -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {FACILITIES.map((facility, index) => (
+        {FACILITIES.slice(2).map((facility, index) => (
           <div class="group relative overflow-hidden rounded-2xl bg-background border border-border p-8 card-hover">
             <div class="absolute top-0 left-0 w-full h-1 vu-accent opacity-50 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex items-start gap-4">
               <div class="p-3 rounded-xl bg-primary/10">
-                {index === 0 && <Music className="h-6 w-6 text-primary" />}
-                {index === 1 && <Radio className="h-6 w-6 text-primary" />}
-                {index === 2 && <Headphones className="h-6 w-6 text-primary" />}
-                {index === 3 && <Volume2 className="h-6 w-6 text-primary" />}
+                {index === 0 && <Headphones className="h-6 w-6 text-primary" />}
+                {index === 1 && <Volume2 className="h-6 w-6 text-primary" />}
               </div>
               <div class="flex-1">
                 <h3 class="font-semibold text-xl mb-2">{facility.name}</h3>
@@ -207,8 +247,71 @@ const iconMap = {
     </div>
   </section>
 
+  <!-- History Section -->
+  <section id="history" class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <Badge variant="secondary" className="mb-4">
+          Our Story
+        </Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+          A Legacy of Excellence
+        </h2>
+        <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+          From a vision to train the next generation of audio professionals to a world-class facility serving the San Diego community.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Jay Henry Photo -->
+        <div class="photo-frame aspect-[4/3]">
+          <img
+            src="/images/jay-henry.jpg"
+            alt="Jay Henry, founder of the Center for Recording Arts & Technology at Southwestern College"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- History Content -->
+        <div>
+          <div class="space-y-8">
+            <div>
+              <div class="flex items-center gap-3 mb-3">
+                <Building className="h-6 w-6 text-primary" />
+                <h3 class="font-bold text-xl">The Beginning</h3>
+              </div>
+              <p class="text-muted-foreground">
+                In <strong class="text-foreground">2007</strong>, the Center for Recording Arts & Technology (CRAT) was inaugurated at Southwestern College under the vision and leadership of <strong class="text-foreground">Jay Henry</strong>, a Grammy-nominated engineer and producer. The state invested <strong class="text-foreground">$6.5 million</strong> to build a facility that would rival professional studios anywhere in the world.
+              </p>
+            </div>
+
+            <div>
+              <div class="flex items-center gap-3 mb-3">
+                <Music className="h-6 w-6 text-primary" />
+                <h3 class="font-bold text-xl">World-Class Facilities</h3>
+              </div>
+              <p class="text-muted-foreground">
+                The investment created recording studios, production labs, and mastering suites equipped with the same gear used by top professionals. The facility was designed from the ground up for education, with acoustics by studio designers and equipment from SSL, Avid, and more.
+              </p>
+            </div>
+
+            <div>
+              <div class="flex items-center gap-3 mb-3">
+                <Users className="h-6 w-6 text-primary" />
+                <h3 class="font-bold text-xl">Community Impact</h3>
+              </div>
+              <p class="text-muted-foreground">
+                Since opening, the program has trained hundreds of audio professionals who now work across the music, film, podcast, and live event industries. Located in Chula Vista, the program serves one of the most diverse communities in Southern California, making professional audio education accessible to all.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Courses Section -->
-  <section id="courses" class="py-24 bg-background">
+  <section id="courses" class="py-24 bg-card">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <Badge variant="outline" className="mb-4">
@@ -259,7 +362,7 @@ const iconMap = {
   </section>
 
   <!-- Faculty Section -->
-  <section id="faculty" class="py-24 bg-card">
+  <section id="faculty" class="py-24 bg-background">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <Badge variant="secondary" className="mb-4">
@@ -275,12 +378,23 @@ const iconMap = {
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {FACULTY.map((member) => (
-          <div class="text-center">
-            <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 mx-auto mb-6 flex items-center justify-center border-4 border-primary/30">
-              <span class="text-3xl font-bold gradient-text">
-                {member.name.split(' ').map(n => n[0]).join('')}
-              </span>
-            </div>
+          <div class="text-center bg-card rounded-2xl p-8 border border-border card-hover">
+            {member.image ? (
+              <div class="w-32 h-32 rounded-full mx-auto mb-6 overflow-hidden border-4 border-primary/20">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            ) : (
+              <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 mx-auto mb-6 flex items-center justify-center border-4 border-primary/20">
+                <span class="text-3xl font-bold gradient-text">
+                  {member.name.split(' ').map(n => n[0]).join('')}
+                </span>
+              </div>
+            )}
             <h3 class="font-semibold text-lg">{member.name}</h3>
             <p class="text-primary font-medium mb-2">{member.title}</p>
             <p class="text-muted-foreground text-sm">{member.bio}</p>
@@ -291,10 +405,10 @@ const iconMap = {
   </section>
 
   <!-- Student Success Section -->
-  <section id="success" class="py-24 bg-background">
+  <section id="success" class="py-24 bg-card">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <Badge variant="accent" className="mb-4">
+        <Badge variant="secondary" className="mb-4">
           Alumni Achievements
         </Badge>
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">
@@ -307,10 +421,10 @@ const iconMap = {
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {STUDENT_SUCCESS.map((student) => (
-          <div class="bg-card rounded-2xl p-8 border border-border relative">
-            <Quote className="absolute top-6 right-6 h-8 w-8 text-primary/20" />
+          <div class="bg-background rounded-2xl p-8 border border-border relative">
+            <Quote className="absolute top-6 right-6 h-8 w-8 text-primary/15" />
             <div class="mb-6">
-              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 mb-4 flex items-center justify-center">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 mb-4 flex items-center justify-center">
                 <span class="text-xl font-bold gradient-text">
                   {student.name.split(' ').map(n => n[0]).join('')}
                 </span>
@@ -318,7 +432,7 @@ const iconMap = {
               <h3 class="font-semibold">{student.name}</h3>
               <p class="text-sm text-muted-foreground">Class of {student.year}</p>
             </div>
-            <p class="text-accent font-medium mb-4">{student.achievement}</p>
+            <p class="text-primary font-medium mb-4">{student.achievement}</p>
             <p class="text-muted-foreground italic text-sm">"{student.quote}"</p>
           </div>
         ))}
@@ -326,20 +440,114 @@ const iconMap = {
     </div>
   </section>
 
-  <!-- Contact / Admissions CTA Section -->
+  <!-- Come Work With Us / Collaboration Section -->
+  <section id="collaborate" class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <Badge variant="secondary" className="mb-4">
+            Community
+          </Badge>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+            Come Work With Us
+          </h2>
+          <p class="text-muted-foreground text-lg mb-6">
+            We believe great music is made through collaboration. Our studios are open to the community &mdash; whether you're an independent artist, band, podcaster, or creative professional looking for a world-class space to bring your project to life.
+          </p>
+          <p class="text-muted-foreground mb-8">
+            Book a session in our studios and work alongside our students and faculty. It's a chance to access professional-grade facilities while supporting the next generation of audio engineers.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 mb-8">
+            <a
+              href={SITE_CONFIG.bookingFormUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-md font-semibold hover:bg-primary/90 transition-colors"
+            >
+              Book a Session
+              <ExternalLink className="h-5 w-5" />
+            </a>
+            <a
+              href={SITE_CONFIG.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 border border-input bg-card px-8 py-4 rounded-md font-semibold hover:bg-secondary transition-colors"
+            >
+              <Instagram className="h-5 w-5" />
+              @{SITE_CONFIG.instagram}
+            </a>
+          </div>
+        </div>
+
+        <!-- What to expect -->
+        <div class="bg-card rounded-2xl p-8 border border-border">
+          <h3 class="text-xl font-semibold mb-6">What to Expect</h3>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
+                <Mic2 className="h-5 w-5" />
+              </div>
+              <div>
+                <h4 class="font-medium mb-1">Professional Studio Access</h4>
+                <p class="text-muted-foreground text-sm">
+                  Record in Studio A with SSL Duality SE console, Pro Tools HDX, and a world-class microphone collection.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
+                <Users className="h-5 w-5" />
+              </div>
+              <div>
+                <h4 class="font-medium mb-1">Student & Faculty Support</h4>
+                <p class="text-muted-foreground text-sm">
+                  Our students gain real-world experience by assisting sessions, and faculty provide guidance throughout.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
+                <Handshake className="h-5 w-5" />
+              </div>
+              <div>
+                <h4 class="font-medium mb-1">Community Collaboration</h4>
+                <p class="text-muted-foreground text-sm">
+                  We welcome musicians, vocalists, producers, and podcasters from across San Diego and beyond.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
+                <Calendar className="h-5 w-5" />
+              </div>
+              <div>
+                <h4 class="font-medium mb-1">Flexible Scheduling</h4>
+                <p class="text-muted-foreground text-sm">
+                  Fill out our booking form and we'll work with you to find the right time for your session.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Admissions Section -->
   <section id="contact" class="py-24 bg-card">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div>
           <Badge variant="outline" className="mb-4">
-            Start Your Journey
+            Get in Touch
           </Badge>
           <h2 class="text-3xl sm:text-4xl font-bold mb-6">
             Ready to Record Your Future?
           </h2>
           <p class="text-muted-foreground text-lg mb-8">
             Take the first step toward your career in audio. Apply to Southwestern College's
-            Recording Arts & Technology program today.
+            Recording Arts & Technology program today, or reach out with any questions.
           </p>
 
           <div class="space-y-4 mb-8">
@@ -357,6 +565,14 @@ const iconMap = {
               </div>
               <a href={`tel:${SITE_CONFIG.phone.replace(/[^0-9+]/g, '')}`} class="text-foreground hover:text-primary transition-colors">
                 {SITE_CONFIG.phone}
+              </a>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                <Instagram className="h-5 w-5" />
+              </div>
+              <a href={SITE_CONFIG.instagramUrl} target="_blank" rel="noopener noreferrer" class="text-foreground hover:text-primary transition-colors">
+                @{SITE_CONFIG.instagram}
               </a>
             </div>
             <div class="flex items-start gap-3">
@@ -384,7 +600,7 @@ const iconMap = {
               href="https://www.swccd.edu/campus-visit"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center justify-center gap-2 border border-input bg-background px-8 py-4 rounded-md font-semibold hover:bg-accent hover:text-accent-foreground transition-colors"
+              class="inline-flex items-center justify-center gap-2 border border-input bg-background px-8 py-4 rounded-md font-semibold hover:bg-secondary transition-colors"
             >
               Schedule a Tour
             </a>

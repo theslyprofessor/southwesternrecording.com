@@ -2,19 +2,23 @@ export const SITE_CONFIG = {
   name: "Southwestern Recording",
   tagline: "Recording Arts & Technology at Southwestern College",
   description: "Professional audio engineering and music production education in San Diego. Learn recording, mixing, mastering, and sound design in our state-of-the-art facilities.",
-  email: "recording@swccd.edu",
+  email: "southwesternrecording@gmail.com",
   phone: "(619) 421-6700",
   url: "https://southwesternrecording.com",
   address: "900 Otay Lakes Road, Chula Vista, CA 91910",
+  instagram: "swc.recordingarts",
+  instagramUrl: "https://instagram.com/swc.recordingarts",
+  bookingFormUrl: "https://forms.gle/Y6QAe9gFCtFocRoS6",
 } as const;
 
 export const NAV_LINKS = [
   { href: "#program", label: "Program" },
   { href: "#facilities", label: "Facilities" },
+  { href: "#history", label: "History" },
   { href: "#courses", label: "Courses" },
   { href: "#faculty", label: "Faculty" },
-  { href: "#success", label: "Student Success" },
-  { href: "#contact", label: "Apply" },
+  { href: "#collaborate", label: "Work With Us" },
+  { href: "#contact", label: "Contact" },
 ] as const;
 
 export const PROGRAM_HIGHLIGHTS = [
@@ -43,13 +47,15 @@ export const PROGRAM_HIGHLIGHTS = [
 export const FACILITIES = [
   {
     name: "Studio A",
-    description: "Our flagship recording space featuring a large live room, isolated vocal booth, and SSL console.",
-    features: ["SSL AWS 948 Console", "Pro Tools HDX", "Acoustic Treatment", "Large Live Room"],
+    description: "Our flagship recording space featuring a large live room with grand piano, isolated vocal booth, and SSL Duality SE console.",
+    features: ["SSL Duality SE Console", "Pro Tools HDX", "Large Live Room", "Grand Piano"],
+    image: "/images/studio-a-control-room.webp",
   },
   {
-    name: "Studio B",
-    description: "Intimate tracking and mixing environment perfect for smaller sessions and post-production.",
-    features: ["Avid S6 Control Surface", "Dolby Atmos Ready", "Isolation Booths", "Video Sync"],
+    name: "Studio A Tracking Room",
+    description: "A spacious tracking room with world-class acoustics, hardwood floors, and room for a full ensemble.",
+    features: ["Acoustic Treatment", "Hardwood Floors", "Isolation Booth", "Full Ensemble Capacity"],
+    image: "/images/studio-a-tracking-room.webp",
   },
   {
     name: "Production Lab",
@@ -104,9 +110,10 @@ export const COURSES = [
 
 export const FACULTY = [
   {
-    name: "Faculty Member",
-    title: "Program Director",
-    bio: "Brings decades of industry experience in recording and production to lead our program.",
+    name: "Jay Henry",
+    title: "Program Founder & Director Emeritus",
+    bio: "Grammy-nominated engineer and producer who founded the Center for Recording Arts & Technology in 2007. Decades of professional experience in recording and production.",
+    image: "/images/jay-henry.jpg",
   },
   {
     name: "Faculty Member",
