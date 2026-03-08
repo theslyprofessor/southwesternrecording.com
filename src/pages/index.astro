@@ -25,7 +25,6 @@ import {
   Volume2,
   MapPin,
   Mail,
-  Phone,
   GraduationCap,
   Quote,
   Instagram,
@@ -202,7 +201,7 @@ const iconMap = {
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
         <div class="photo-frame aspect-[16/10]">
           <img
-            src="/images/studio-a-control-room.webp"
+            src="/images/studio-a-control-room-hq.webp"
             alt="Studio A Control Room with SSL Duality SE console"
             loading="lazy"
           />
@@ -238,7 +237,7 @@ const iconMap = {
         </div>
         <div class="photo-frame aspect-[16/10] order-1 lg:order-2">
           <img
-            src="/images/studio-a-tracking-room.webp"
+            src="/images/studio-a-tracking-room-hq.webp"
             alt="Studio A Tracking Room with hardwood floors and grand piano"
             loading="lazy"
           />
@@ -293,7 +292,7 @@ const iconMap = {
         <!-- Jay Henry Photo -->
         <div class="photo-frame aspect-[4/3]">
           <img
-            src="/images/jay-henry.jpg"
+            src="/images/jay-henry-hq.jpg"
             alt="Jay Henry, founder of the Center for Recording Arts & Technology at Southwestern College"
             loading="lazy"
           />
@@ -308,7 +307,7 @@ const iconMap = {
                 <h3 class="font-bold text-xl">The Beginning</h3>
               </div>
               <p class="text-muted-foreground">
-                In <strong class="text-foreground">2007</strong>, the Center for Recording Arts & Technology (CRAT) was inaugurated at Southwestern College under the vision and leadership of <strong class="text-foreground">Jay Henry</strong>, a Grammy-nominated engineer and producer. The state invested <strong class="text-foreground">$6.5 million</strong> to build a facility that would rival professional studios anywhere in the world.
+                In <strong class="text-foreground">2007</strong>, the Center for Recording Arts & Technology (CRAT) was inaugurated at Southwestern College under the vision and leadership of <strong class="text-foreground">Jay Henry</strong>, a Grammy-nominated engineer and producer. The state invested <strong class="text-foreground">$6.5 million</strong> to build a facility that would rival professional studios anywhere in the world. Jay passed away in <strong class="text-foreground">2020</strong>, but his legacy lives on through the program he built and the students it continues to inspire.
               </p>
             </div>
 
@@ -410,11 +409,20 @@ const iconMap = {
       <div class="max-w-md mx-auto">
         {FACULTY.map((member) => (
           <div class="text-center bg-card rounded-2xl p-8 border border-border card-hover">
-            <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 mx-auto mb-6 flex items-center justify-center border-4 border-primary/20">
-              <span class="text-3xl font-bold gradient-text">
-                {member.name.split(' ').map(n => n[0]).join('')}
-              </span>
-            </div>
+            {member.image ? (
+              <img
+                src={member.image}
+                alt={member.name}
+                class="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-primary/20"
+                loading="lazy"
+              />
+            ) : (
+              <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 mx-auto mb-6 flex items-center justify-center border-4 border-primary/20">
+                <span class="text-3xl font-bold gradient-text">
+                  {member.name.split(' ').map(n => n[0]).join('')}
+                </span>
+              </div>
+            )}
             <h3 class="font-semibold text-lg">{member.name}</h3>
             <p class="text-primary font-medium mb-2">{member.title}</p>
             <p class="text-muted-foreground text-sm">{member.bio}</p>
@@ -578,14 +586,6 @@ const iconMap = {
               </div>
               <a href={`mailto:${SITE_CONFIG.email}`} class="text-foreground hover:text-primary transition-colors">
                 {SITE_CONFIG.email}
-              </a>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="p-2 rounded-lg bg-primary/10 text-primary">
-                <Phone className="h-5 w-5" />
-              </div>
-              <a href={`tel:${SITE_CONFIG.phone.replace(/[^0-9+]/g, '')}`} class="text-foreground hover:text-primary transition-colors">
-                {SITE_CONFIG.phone}
               </a>
             </div>
             <div class="flex items-center gap-3">

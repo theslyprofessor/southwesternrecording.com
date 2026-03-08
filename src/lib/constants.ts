@@ -3,7 +3,6 @@ export const SITE_CONFIG = {
   tagline: "Recording Arts & Technology at Southwestern College",
   description: "Professional audio engineering and music production education in San Diego. Learn recording, mixing, mastering, and sound design in our state-of-the-art facilities.",
   email: "southwesternrecording@gmail.com",
-  phone: "(619) 421-6700",
   url: "https://southwesternrecording.com",
   address: "900 Otay Lakes Road, Chula Vista, CA 91910",
   instagram: "swc.recordingarts",
@@ -187,6 +186,7 @@ export const FACULTY = [
     name: "Nakul Tiruviluamala",
     title: "Program Lead",
     bio: "Audio engineer, technologist, and educator leading the Recording Arts & Technology program at Southwestern College.",
+    image: "/images/nakul-tiruviluamala.jpg",
   },
 ] as const;
 
