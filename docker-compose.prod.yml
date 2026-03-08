@@ -1,0 +1,27 @@
+services:
+  web:
+    build: .
+    container_name: swrecording-web
+    restart: unless-stopped
+    labels:
+      # Main router — southwesternrecording.com
+      - "traefik.enable=true"
+      - "traefik.http.routers.swrecording.rule=Host(`southwesternrecording.com`)"
+      - "traefik.http.routers.swrecording.tls=true"
+      - "traefik.http.routers.swrecording.tls.certresolver=letsencrypt"
+      - "traefik.http.services.swrecording.loadbalancer.server.port=80"
+
+      # WWW redirect — www.southwesternrecording.com → southwesternrecording.com
+      - "traefik.http.routers.swrecording-www.rule=Host(`www.southwesternrecording.com`)"
+      - "traefik.http.routers.swrecording-www.tls=true"
+      - "traefik.http.routers.swrecording-www.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.swrecording-www.middlewares=swrecording-www-redirect"
+      - "traefik.http.middlewares.swrecording-www-redirect.redirectregex.regex=^https?://www\\.southwesternrecording\\.com(.*)"
+      - "traefik.http.middlewares.swrecording-www-redirect.redirectregex.replacement=https://southwesternrecording.com$${1}"
+      - "traefik.http.middlewares.swrecording-www-redirect.redirectregex.permanent=true"
+    networks:
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true
