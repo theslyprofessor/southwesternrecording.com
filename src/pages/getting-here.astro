@@ -20,10 +20,13 @@ const freeParkingFields = [
   "Type of car (sedan / 4-door, etc.)",
 ];
 // Pre-filled email: one "Label: " line per field so the recipient fills values inline.
-const parkingEmailBody = freeParkingFields.map((f) => `${f}: `).join("\n");
-const parkingMailto = `mailto:${SITE_CONFIG.email}?subject=${encodeURIComponent(
-  "Free Parking Request - Studio Session",
-)}&body=${encodeURIComponent(parkingEmailBody)}`;
+// Single ?body= param only (no "&"): an "&" gets HTML-escaped to &#38; and
+// Cloudflare's email-obfuscation re-encoding leaves it literal in the live
+// href, which breaks query parsing. One param sidesteps that entirely.
+const parkingEmailBody =
+  "Free Parking Request - Studio Session\n\n" +
+  freeParkingFields.map((f) => `${f}: `).join("\n");
+const parkingMailto = `mailto:${SITE_CONFIG.email}?body=${encodeURIComponent(parkingEmailBody)}`;
 ---
 
 <PageLayout
