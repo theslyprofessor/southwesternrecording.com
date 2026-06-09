@@ -1,24 +1,11 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
 import { SITE_CONFIG } from "@/lib/constants";
-import { MapPin, Car, CircleDollarSign, ExternalLink, CheckCircle2 } from "lucide-react";
+import { MapPin, CircleDollarSign, ExternalLink } from "lucide-react";
+import FreeParkingForm from "@/components/react/FreeParkingForm";
 
 const mapsUrl = "https://maps.app.goo.gl/qpnxPvjF1u2aHYqe6";
 const permitUrl = "https://swc.thepermitstore.com/";
-
-const freeParkingFields = [
-  "Date and time requesting free parking",
-  "Name",
-  "Email",
-  "Phone number",
-  "License plate number",
-  "License plate state",
-  "Make of car",
-  "Model of car",
-  "Color of car",
-  "Year of car",
-  "Type of car (sedan / 4-door, etc.)",
-];
 ---
 
 <PageLayout
@@ -76,37 +63,8 @@ const freeParkingFields = [
         </figure>
       </div>
 
-      <!-- Parking for Free -->
-      <div class="bg-card rounded-2xl p-8 border border-border mb-8">
-        <div class="inline-flex items-center gap-2 text-primary font-semibold mb-3">
-          <Car className="h-5 w-5" />
-          <span>Parking for Free</span>
-        </div>
-        <p class="text-foreground leading-relaxed mb-6">
-          If you book in advance, parking can be free. Email
-          <a
-            href={`mailto:${SITE_CONFIG.email}`}
-            class="text-primary underline underline-offset-2 hover:opacity-80"
-          >{SITE_CONFIG.email}</a>
-          with the details below <strong>at least five business days before your
-          session</strong>, and we'll arrange your free parking with Parking
-          Services.
-        </p>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 mb-6">
-          {freeParkingFields.map((field) => (
-            <li class="flex items-start gap-2 text-foreground">
-              <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-              <span>{field}</span>
-            </li>
-          ))}
-        </ul>
-        <a
-          href={`mailto:${SITE_CONFIG.email}?subject=Free%20Parking%20Request%20-%20Studio%20Session`}
-          class="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 font-medium hover:opacity-90 transition-opacity"
-        >
-          Request Free Parking
-        </a>
-      </div>
+      <!-- Parking for Free (interactive form island) -->
+      <FreeParkingForm client:load email={SITE_CONFIG.email} />
 
       <!-- Paying for Parking -->
       <div class="bg-card rounded-2xl p-8 border border-border">
