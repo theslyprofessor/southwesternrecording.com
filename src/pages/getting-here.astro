@@ -1,0 +1,137 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { Badge } from "@/components/ui/badge";
+import { SITE_CONFIG } from "@/lib/constants";
+import { MapPin, Car, CircleDollarSign, ExternalLink, CheckCircle2 } from "lucide-react";
+
+const mapsUrl = "https://maps.app.goo.gl/qpnxPvjF1u2aHYqe6";
+const permitUrl = "https://swc.thepermitstore.com/";
+
+const freeParkingFields = [
+  "Date and time requesting free parking",
+  "Name",
+  "Email",
+  "Phone number",
+  "License plate number",
+  "License plate state",
+  "Make of car",
+  "Model of car",
+  "Color of car",
+  "Year of car",
+  "Type of car (sedan / 4-door, etc.)",
+];
+---
+
+<PageLayout
+  title="Getting to the Southwestern College Studio"
+  description="Directions, parking, and the free-parking procedure for visiting the Center for Recording Arts & Technology at Southwestern College."
+>
+  <section class="pt-32 pb-24 bg-background min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Hero -->
+      <div class="text-center mb-16">
+        <Badge variant="secondary" className="mb-4">Visit Us</Badge>
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4">
+          Getting to the Southwestern College Studio
+        </h1>
+        <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+          Everything you need to find us, park, and reach the Recording Arts
+          Complex for your session.
+        </p>
+      </div>
+
+      <!-- Directions + Map -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+        <div class="space-y-6">
+          <div class="inline-flex items-center gap-2 text-primary font-semibold">
+            <MapPin className="h-5 w-5" />
+            <span>Where to Park</span>
+          </div>
+          <p class="text-foreground leading-relaxed">
+            The easiest place to park is <strong>Parking Lot O</strong>, located
+            at the corner of Otay Lakes Road and Elmhurst Street in Chula Vista.
+            Turn onto Elmhurst Street toward the campus, and you'll find Parking
+            Lot O on your right.
+          </p>
+          <p class="text-foreground leading-relaxed">
+            Parking Lot O is marked by the red arrow on the map. Once you've
+            parked, walk up the steps to the Recording Arts Complex:
+            <strong> Building 84, Room 101</strong>.
+          </p>
+          <div class="flex flex-wrap gap-3 pt-2">
+            <a
+              href={mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 font-medium hover:opacity-90 transition-opacity"
+            >
+              <MapPin className="h-4 w-4" />
+              Open in Google Maps
+            </a>
+          </div>
+          <p class="text-muted-foreground text-sm pt-2">{SITE_CONFIG.address}</p>
+        </div>
+
+        <figure class="photo-frame aspect-[697/402]">
+          <img
+            src="/images/getting-here-parking-map.svg"
+            alt="Campus map with a red arrow pointing to Parking Lot O, near the Recording Arts Complex (Building 84)."
+            class="w-full h-full object-contain"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+
+      <!-- Parking for Free -->
+      <div class="bg-card rounded-2xl p-8 border border-border mb-8">
+        <div class="inline-flex items-center gap-2 text-primary font-semibold mb-3">
+          <Car className="h-5 w-5" />
+          <span>Parking for Free</span>
+        </div>
+        <p class="text-foreground leading-relaxed mb-6">
+          If you book in advance, parking can be free. Email
+          <a
+            href={`mailto:${SITE_CONFIG.email}`}
+            class="text-primary underline underline-offset-2 hover:opacity-80"
+          >{SITE_CONFIG.email}</a>
+          with the details below <strong>at least five business days before your
+          session</strong>, and we'll arrange your free parking with Parking
+          Services.
+        </p>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 mb-6">
+          {freeParkingFields.map((field) => (
+            <li class="flex items-start gap-2 text-foreground">
+              <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+              <span>{field}</span>
+            </li>
+          ))}
+        </ul>
+        <a
+          href={`mailto:${SITE_CONFIG.email}?subject=Free%20Parking%20Request%20-%20Studio%20Session`}
+          class="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 font-medium hover:opacity-90 transition-opacity"
+        >
+          Request Free Parking
+        </a>
+      </div>
+
+      <!-- Paying for Parking -->
+      <div class="bg-card rounded-2xl p-8 border border-border">
+        <div class="inline-flex items-center gap-2 text-primary font-semibold mb-3">
+          <CircleDollarSign className="h-5 w-5" />
+          <span>Paying for Parking</span>
+        </div>
+        <p class="text-foreground leading-relaxed">
+          If you weren't able to provide the information above with ample notice,
+          permits can be obtained for a nominal fee online
+          <a
+            href={permitUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary underline underline-offset-2 hover:opacity-80 inline-flex items-center gap-1"
+          >here<ExternalLink className="h-3.5 w-3.5" /></a>
+          or at the kiosks within the parking lot.
+        </p>
+      </div>
+    </div>
+  </section>
+</PageLayout>
