@@ -1,5 +1,7 @@
 ---
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/constants";
+const isHome = Astro.url.pathname === "/";
+const navHref = (href: string) => (!isHome && href.startsWith("#") ? `/${href}` : href);
 ---
 
 <footer class="bg-card border-t border-border">
@@ -36,7 +38,7 @@ import { SITE_CONFIG, NAV_LINKS } from "@/lib/constants";
           {NAV_LINKS.map((link) => (
             <li>
               <a
-                href={link.href}
+                href={navHref(link.href)}
                 class="text-muted-foreground hover:text-foreground transition-colors text-sm"
               >
                 {link.label}

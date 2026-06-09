@@ -1,5 +1,9 @@
 ---
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/constants";
+// Section anchors (#program, #facilities, ...) live on the homepage. On any
+// other page a bare "#x" dead-ends, so prefix with "/" to jump home + scroll.
+const isHome = Astro.url.pathname === "/";
+const navHref = (href: string) => (!isHome && href.startsWith("#") ? `/${href}` : href);
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -15,14 +19,14 @@ import { SITE_CONFIG, NAV_LINKS } from "@/lib/constants";
       <div class="hidden md:flex items-center gap-8">
         {NAV_LINKS.map((link) => (
           <a
-            href={link.href}
+            href={navHref(link.href)}
             class="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
           >
             {link.label}
           </a>
         ))}
         <a
-          href="#contact"
+          href={navHref("#contact")}
           class="bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm font-medium hover:bg-primary/90 transition-colors"
         >
           Apply Now
@@ -65,14 +69,14 @@ import { SITE_CONFIG, NAV_LINKS } from "@/lib/constants";
       <div class="flex flex-col gap-4">
         {NAV_LINKS.map((link) => (
           <a
-            href={link.href}
+            href={navHref(link.href)}
             class="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium py-2"
           >
             {link.label}
           </a>
         ))}
         <a
-          href="#contact"
+          href={navHref("#contact")}
           class="bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm font-medium hover:bg-primary/90 transition-colors text-center"
         >
           Apply Now

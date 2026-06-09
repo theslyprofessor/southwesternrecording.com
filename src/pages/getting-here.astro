@@ -1,6 +1,5 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
-import { Badge } from "@/components/ui/badge";
 import { SITE_CONFIG } from "@/lib/constants";
 import { MapPin, Car, CircleDollarSign, ExternalLink, CheckCircle2 } from "lucide-react";
 
@@ -23,21 +22,16 @@ const freeParkingFields = [
 ---
 
 <PageLayout
-  title="Getting to the Southwestern College Studio"
+  title="Getting to the Southwestern College Recording Studio"
   description="Directions, parking, and the free-parking procedure for visiting the Center for Recording Arts & Technology at Southwestern College."
 >
   <section class="pt-32 pb-24 bg-background min-h-screen">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Hero -->
       <div class="text-center mb-16">
-        <Badge variant="secondary" className="mb-4">Visit Us</Badge>
         <h1 class="text-4xl sm:text-5xl font-bold mb-4">
-          Getting to the Southwestern College Studio
+          Getting to the Southwestern College Recording Studio
         </h1>
-        <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Everything you need to find us, park, and reach the Recording Arts
-          Complex for your session.
-        </p>
       </div>
 
       <!-- Directions + Map -->
