@@ -1,0 +1,107 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import InternshipForm from "@/components/react/InternshipForm";
+import { Mic2, Building2, CalendarDays, GraduationCap, ClipboardList } from "lucide-react";
+
+const steps = [
+  {
+    icon: ClipboardList,
+    title: "1. Apply below",
+    body: "Fill out the interest form on this page. It covers your background, goals, and weekly availability, and works for both the campus studio and external internships.",
+  },
+  {
+    icon: CalendarDays,
+    title: "2. Come to the intern meeting",
+    body: "The intern info meeting is mandatory: Wednesday, September 2 at 12:00 noon (room emailed to everyone who applies). Can't make it? Email southwesternrecording@gmail.com to independently schedule a meeting.",
+  },
+  {
+    icon: GraduationCap,
+    title: "3. Enroll in the 290 course",
+    body: "Internships run through a 290 cooperative work experience course: RA&T students enroll in RA&T 290, and film students enroll in FTMA 290. We'll walk you through enrollment at the meeting.",
+  },
+];
+---
+
+<PageLayout
+  title="Recording Studio Internships"
+  description="Apply for the Campus Recording Studio Internship or an external internship through the Recording Arts & Technology program at Southwestern College."
+>
+  <section class="pt-32 pb-24 bg-background min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Hero -->
+      <div class="text-center mb-16 max-w-3xl mx-auto">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4">
+          Studio Internships
+        </h1>
+        <p class="text-lg text-muted-foreground leading-relaxed">
+          Get real hours in a professional recording environment. Intern in the
+          campus studios at the Center for Recording Arts &amp; Technology, or
+          let us help place you in an external internship with a local studio,
+          venue, or media company.
+        </p>
+      </div>
+
+      <!-- Two tracks -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
+        <div class="bg-card rounded-xl border border-border p-6">
+          <div class="inline-flex items-center gap-2 text-primary font-semibold mb-3">
+            <Mic2 className="h-5 w-5" />
+            <span>Campus Recording Studio Internship</span>
+          </div>
+          <p class="text-foreground leading-relaxed">
+            Work alongside faculty and student engineers in Building 84 —
+            sessions, maintenance, and studio operations on the SSL and our
+            Pro Tools HDX rigs. Scheduled around your availability, Monday
+            through Friday.
+          </p>
+        </div>
+        <div class="bg-card rounded-xl border border-border p-6">
+          <div class="inline-flex items-center gap-2 text-primary font-semibold mb-3">
+            <Building2 className="h-5 w-5" />
+            <span>External Internship</span>
+          </div>
+          <p class="text-foreground leading-relaxed">
+            Prefer to get off campus? External internships with studios, venues,
+            and media companies are coordinated by Julie Swanson, Work
+            Experience Education Coordinator — email
+            <a href="mailto:jswanson@swccd.edu" class="text-primary underline">jswanson@swccd.edu</a>
+            to get started.
+          </p>
+        </div>
+      </div>
+
+      <!-- How it works -->
+      <div class="max-w-4xl mx-auto mb-20">
+        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-10">
+          How to sign up
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {steps.map((s) => (
+            <div class="text-center">
+              <div class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 text-primary mb-4">
+                <s.icon className="h-6 w-6" />
+              </div>
+              <h3 class="font-semibold text-lg mb-2">{s.title}</h3>
+              <p class="text-muted-foreground leading-relaxed text-sm">{s.body}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-center text-sm text-muted-foreground mt-8">
+          Recommended background: enrollment in 121, or having completed 120.
+          Not there yet? Apply anyway — we'll point you at the right first class.
+        </p>
+      </div>
+
+      <!-- Form -->
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-3">
+          Apply / Express Interest
+        </h2>
+        <p class="text-center text-muted-foreground mb-10">
+          Takes about five minutes. We'll follow up at your SWC email.
+        </p>
+        <InternshipForm client:load />
+      </div>
+    </div>
+  </section>
+</PageLayout>
