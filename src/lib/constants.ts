@@ -13,7 +13,6 @@ export const SITE_CONFIG = {
 
 export const NAV_LINKS = [
   { href: "#program", label: "Program" },
-  { href: "/request", label: "Request Studio Time" },
   { href: "#facilities", label: "Facilities" },
   { href: "#history", label: "History" },
   { href: "#courses", label: "Courses" },
