@@ -7,11 +7,13 @@ export const SITE_CONFIG = {
   address: "900 Otay Lakes Road, Chula Vista, CA 91910",
   instagram: "swc.recordingarts",
   instagramUrl: "https://instagram.com/swc.recordingarts",
-  bookingFormUrl: "https://forms.gle/Y6QAe9gFCtFocRoS6",
+  // Convex form on midimaze (2-week rule, role, auto-reply). Was a Google Form.
+  bookingFormUrl: "https://midimaze.com/studio-request",
 } as const;
 
 export const NAV_LINKS = [
   { href: "#program", label: "Program" },
+  { href: "/request", label: "Request Studio Time" },
   { href: "#facilities", label: "Facilities" },
   { href: "#history", label: "History" },
   { href: "#courses", label: "Courses" },
