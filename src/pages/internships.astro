@@ -1,30 +1,27 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
-import InternshipForm from "@/components/react/InternshipForm";
-import { Mic2, Building2, CalendarDays, GraduationCap, ClipboardList } from "lucide-react";
+import { Mic2, Building2, CalendarDays, GraduationCap } from "lucide-react";
 
+// No interest form any more (professor, 2026-09-10): students enroll in the
+// 290 course for their major. The section is capped at 20 interns a semester,
+// so the only "application" is enrolling before it fills.
 const steps = [
   {
-    icon: ClipboardList,
-    title: "1. Apply below",
-    body: "Fill out the interest form on this page. It covers your background, goals, and weekly availability, and works for both the campus studio and external internships.",
+    icon: GraduationCap,
+    title: "1. Enroll in the 290 course",
+    body: "Internships run through a 290 cooperative work experience course. RA&T majors enroll in RA&T 290; FTMA majors enroll in FTMA 290. The internship is capped at 20 students per semester, so enroll as soon as registration opens.",
   },
   {
     icon: CalendarDays,
     title: "2. Come to the intern meeting",
-    body: "The intern info meeting is mandatory: Wednesday, September 2 at 12:00 noon (room emailed to everyone who applies). Can't make it? Email southwesternrecording@gmail.com to independently schedule a meeting.",
-  },
-  {
-    icon: GraduationCap,
-    title: "3. Enroll in the 290 course",
-    body: "Internships run through a 290 cooperative work experience course: RA&T students enroll in RA&T 290, and film students enroll in FTMA 290. We'll walk you through enrollment at the meeting.",
+    body: "There is a mandatory intern info meeting at the start of each semester. Everyone enrolled in 290 gets the date and room by email. Can't make it? Email southwesternrecording@gmail.com to schedule a meeting.",
   },
 ];
 ---
 
 <PageLayout
   title="Recording Studio Internships"
-  description="Apply for the Campus Recording Studio Internship or an external internship through the Recording Arts & Technology program at Southwestern College."
+  description="Campus Recording Studio Internship and external internships through the Recording Arts & Technology program at Southwestern College. Enroll in RA&T 290 or FTMA 290; 20 interns per semester."
 >
   <section class="pt-32 pb-24 bg-background min-h-screen">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,19 +85,8 @@ const steps = [
         </div>
         <p class="text-center text-sm text-muted-foreground mt-8">
           Recommended background: enrollment in 121, or having completed 120.
-          Not there yet? Apply anyway — we'll point you at the right first class.
+          Not there yet? Email southwesternrecording@gmail.com and we'll point you at the right first class.
         </p>
-      </div>
-
-      <!-- Form -->
-      <div class="max-w-2xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-3">
-          Apply / Express Interest
-        </h2>
-        <p class="text-center text-muted-foreground mb-10">
-          Takes about five minutes. We'll follow up at your SWC email.
-        </p>
-        <InternshipForm client:load />
       </div>
     </div>
   </section>
