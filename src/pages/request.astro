@@ -13,42 +13,42 @@ const FORM_URL = "https://midimaze.com/studio-request";
   title="Request Studio Time"
   description="Request a recording, mixing, or composition session at Southwestern Recording. Current interns have priority; requests need at least two weeks of notice."
 >
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24">
-    <h1 class="text-3xl sm:text-4xl font-bold text-white">Request Studio Time</h1>
-    <p class="mt-3 text-lg text-neutral-300 max-w-3xl">
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 bg-background">
+    <h1 class="text-3xl sm:text-4xl font-bold text-foreground">Request Studio Time</h1>
+    <p class="mt-3 text-lg text-foreground leading-relaxed max-w-3xl">
       Anyone can ask for a session. This is a request, not a confirmed booking. Current
       interns have priority in helping decide what gets scheduled during open studio hours.
     </p>
 
     <div class="mt-10 grid gap-6 sm:grid-cols-3">
-      <div class="rounded-xl border border-neutral-800 bg-neutral-900/60 p-5">
-        <CalendarDays className="h-6 w-6 text-violet-400" />
-        <h2 class="mt-3 font-semibold text-white">At least two weeks out</h2>
-        <p class="mt-1 text-sm text-neutral-400">
+      <div class="rounded-xl border border-border bg-card p-5">
+        <CalendarDays className="h-6 w-6 text-primary" />
+        <h2 class="mt-3 font-semibold text-foreground">At least two weeks out</h2>
+        <p class="mt-1 text-sm text-muted-foreground leading-relaxed">
           Requests must be for a date at least 14 days away. Sooner than that is open studio
           time that current interns schedule first.
         </p>
       </div>
-      <div class="rounded-xl border border-neutral-800 bg-neutral-900/60 p-5">
-        <Users className="h-6 w-6 text-violet-400" />
-        <h2 class="mt-3 font-semibold text-white">An intern will be your liaison</h2>
-        <p class="mt-1 text-sm text-neutral-400">
+      <div class="rounded-xl border border-border bg-card p-5">
+        <Users className="h-6 w-6 text-primary" />
+        <h2 class="mt-3 font-semibold text-foreground">An intern will be your liaison</h2>
+        <p class="mt-1 text-sm text-muted-foreground leading-relaxed">
           If your request is approved, a studio intern is assigned to it and will be with
           you for the session. Say what role you want: artist, assistant producer,
           assistant engineer, sound designer.
         </p>
       </div>
-      <div class="rounded-xl border border-neutral-800 bg-neutral-900/60 p-5">
-        <ClipboardList className="h-6 w-6 text-violet-400" />
-        <h2 class="mt-3 font-semibold text-white">You will hear back within two weeks</h2>
-        <p class="mt-1 text-sm text-neutral-400">
+      <div class="rounded-xl border border-border bg-card p-5">
+        <ClipboardList className="h-6 w-6 text-primary" />
+        <h2 class="mt-3 font-semibold text-foreground">You will hear back within two weeks</h2>
+        <p class="mt-1 text-sm text-muted-foreground leading-relaxed">
           You get a confirmation email right away. If no intern takes the request within
           two weeks it closes on its own, and you are welcome to ask again.
         </p>
       </div>
     </div>
 
-    <div class="mt-10 rounded-xl border border-neutral-800 overflow-hidden bg-neutral-950">
+    <div class="mt-10 rounded-xl border border-border overflow-hidden bg-card">
       <iframe
         src={FORM_URL}
         title="Studio request form"
@@ -58,13 +58,13 @@ const FORM_URL = "https://midimaze.com/studio-request";
       ></iframe>
     </div>
 
-    <p class="mt-4 text-sm text-neutral-500">
+    <p class="mt-4 text-sm text-muted-foreground">
       If the form does not load here,
-      <a href={FORM_URL} class="text-violet-400 hover:text-violet-300 underline inline-flex items-center gap-1">
+      <a href={FORM_URL} class="text-primary underline underline-offset-2 hover:opacity-80 inline-flex items-center gap-1">
         open it in a new tab <ExternalLink className="h-3.5 w-3.5" />
       </a>.
       Southwestern College students who have reached RA&amp;T 121 can also sign in to
-      <a href="https://midimaze.com/me/studio-booking" class="text-violet-400 hover:text-violet-300 underline">midimaze.com</a>
+      <a href="https://midimaze.com/me/studio-booking" class="text-primary underline underline-offset-2 hover:opacity-80">midimaze.com</a>
       to see open slots in the next two weeks.
     </p>
   </section>
